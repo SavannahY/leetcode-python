@@ -1,0 +1,10 @@
+import numpy as np
+
+class Solution:
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        out = []
+        arr = np.array(matrix)
+        while len(arr) > 0:
+            out.extend(arr[0])
+            arr = arr[1:].transpose()[::-1]
+        return out
