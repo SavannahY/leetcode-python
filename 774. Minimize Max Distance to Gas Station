@@ -1,0 +1,13 @@
+class Solution:
+    def minmaxGasDist(self, stations: List[int], k: int) -> float:
+        dists = [stations[i] - stations[i - 1] for i in range(1, len(stations))]
+        l, r = 0, max(dists)
+        def check(m):
+            return sum([ceil(d / m) - 1 for d in dists]) > k 
+        while l < r-0.00000000001:
+            m = (l + r) / 2
+            if check(m):
+                l = m
+            else:
+                r = m
+        return l
